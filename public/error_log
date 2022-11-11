@@ -1,0 +1,2 @@
+[23-Jun-2022 13:34:28 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/fkmjteyu/gat.8randx.me/taller/app/Http/Controllers/HomeTeacherController.php on line 5
+[30-Jun-2022 23:41:49 UTC] PHP Fatal error:  Cannot use App\Models\Tutor as Tutor because the name is already in use in /home/fkmjteyu/gat.8randx.me/taller/app/Http/Controllers/TutorController.php on line 6
