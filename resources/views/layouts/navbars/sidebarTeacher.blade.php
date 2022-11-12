@@ -74,8 +74,8 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link text-white" href="{{ route('showtutor') }}">
-                                <i class="ni ni-single-02 "></i> {{ __('Padres') }}
+                            <a class="nav-link text-white" href="{{ route('showclasroom') }}">
+                                <i class="ni ni-single-02 "></i> {{ __('Estudiante') }}
                             </a>
                         </li>
                         <li class="nav-item mb-5 mr-4 ml-4 pl-1 bg-gray" style="position: absolute; bottom: 0;">

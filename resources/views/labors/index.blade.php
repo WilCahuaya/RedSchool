@@ -134,7 +134,7 @@
                                                                         </td>
 
                                                                         <td>
-                                                                            <a href="{{ route('labors.edit', $labor->id) }}"
+                                                                            <a href="{{ route('calificar_labors', $labor->id) }}"
                                                                                 class="btn btn-outline-primary">Calificar</a>
                                                                             <form
                                                                                 action="{{ route('labors.destroy', $labor->id) }}"

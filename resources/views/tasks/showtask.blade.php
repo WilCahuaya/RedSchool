@@ -52,7 +52,7 @@
                     <div class="d-flex justify-content-end">
                         <div class="col-lg-10 col-6">
                             <a href="{{ route('tasks.index') }}" class="btn btn-outline-primary float-right mx-sm-3 my-sm-0">Cancelar</a>
-                            <a href="{{ route('sendtask_task',$task->id) }}" class="btn btn-outline-primary float-right">Enviar</a>
+                            <a href="{{ route('sendtask',$task->id) }}" class="btn btn-outline-primary float-right">Enviar</a>
                         </div>
                     </div>
                 </div>

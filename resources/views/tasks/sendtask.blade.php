@@ -58,38 +58,39 @@
                                             @if ($matricula->courses_id == $course->id)
                                                 @foreach ($students as $student)
                                                     @if ($matricula->students_id == $student->id)
-                                                    @if (count($students) <= 0)
-                                                    <tr>
-                                                        <td colspan="6">No hay resultados</td>
-                                                    </tr>
-                                                @else
-                                                    <tr>
-                                                        <td>
-                                                            {{ $student->name }} {{$student->surname  }}
-                                                        </td>
-                                                        <td>
-                                                            {{ $student->number_phone }}
-                                                        </td>
-                                                        <td>
-                                                            {{ $task->delivery_date }}
-                                                        </td>
-                                                        <td>
-                                                            {{ substr($course->name,0,-2) }}
-                                                                            @foreach ($classrooms as $classroom)
-                                                                                @if ($course->classrooms_id == $classroom->id)
-                                                                                    {{ $classroom->grade }}
-                                                                                    "{{ $classroom->section }}"
-                                                                                @endif
-                                                                            @endforeach
-                                                        </td>
-                                                        <td>
-                                                            <img src="{{ asset('argon/img/photos/' . $task->photo) }}"
-                                                                alt="{{ $task->name }}" class="img-fluid" width="150">
-                                                        </td>
+                                                        @if (count($students) <= 0)
+                                                            <tr>
+                                                                <td colspan="6">No hay resultados</td>
+                                                            </tr>
+                                                        @else
+                                                            <tr>
+                                                                <td>
+                                                                    {{ $student->name }} {{ $student->surname }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $student->number_phone }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $task->delivery_date }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ substr($course->name, 0, -2) }}
+                                                                    @foreach ($classrooms as $classroom)
+                                                                        @if ($course->classrooms_id == $classroom->id)
+                                                                            {{ $classroom->grade }}
+                                                                            "{{ $classroom->section }}"
+                                                                        @endif
+                                                                    @endforeach
+                                                                </td>
+                                                                <td>
+                                                                    <img src="{{ asset('argon/img/photos/' . $task->photo) }}"
+                                                                        alt="{{ $task->name }}" class="img-fluid"
+                                                                        width="150">
+                                                                </td>
 
 
-                                                    </tr>
-                                                    @endif
+                                                            </tr>
+                                                        @endif
                                                     @endif
                                                 @endforeach
                                             @endif
@@ -103,12 +104,10 @@
                 </div>
                 <div class="d-flex justify-content-end mt-2">
                     <td>
-                        <a href="{{ route('send_task', $task->id) }}"
-                            class="btn btn-outline-primary">Enviar</a>
+                        <a href="{{ route('send_task', $task->id) }}" class="btn btn-outline-primary">Enviar</a>
                     </td>
                     <td>
-                        <a href="{{ route('tasks.index') }}"
-                            class="btn btn-outline-primary">Cancelar</a>
+                        <a href="{{ route('tasks.index') }}" class="btn btn-outline-primary">Cancelar</a>
                     </td>
                 </div>
             </div>

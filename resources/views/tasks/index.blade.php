@@ -128,7 +128,7 @@
                                                                         width="150">
                                                                 </td>
                                                                 <td>
-                                                                    <a href="{{ route('showtask', $task->id) }}"
+                                                                    <a href="{{ route('showtask',$task->id) }}"
                                                                         class="btn btn-outline-primary">Enviar</a>
                                                                 </td>
                                                                 <td>

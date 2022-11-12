@@ -7,6 +7,11 @@ use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Imports\StudentsImport;
 use App\Models\Tutor;
+use App\Models\Task;
+use App\Models\Course;
+use App\Models\Classroom;
+use App\Models\Student_Course;
+use App\Models\Teacher;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -35,6 +40,24 @@ class StudentController extends Controller
         ->orderBy('surname','asc')
         ->paginate(7);
         return view('students.index',compact('students','busqueda'));
+    }
+    public function indextutor( Request $request)
+    {
+        $busqueda=trim($request->get('busqueda'));
+        //sin paginación
+        // return view('students.index', [
+        //     'students' => Student::all(),
+        // ]);
+
+        //con paginación
+        $students=DB::table('students')
+        ->select('id','DNI','name','surname','email','number_phone','is_active')
+        ->where('name','LIKE','%'.$busqueda.'%')
+        ->orWhere('surname','LIKE','%'.$busqueda.'%')
+        ->orWhere('DNI','LIKE','%'.$busqueda.'%')
+        ->orderBy('surname','asc')
+        ->paginate(7);
+        return view('students.indextutor',compact('students','busqueda'));
     }
 
     /**
@@ -70,6 +93,17 @@ class StudentController extends Controller
         $tutor = Tutor::find($id_tutor);
         // dd($student);
         return view('students.show', [
+            'student' => $student,
+            'tutor'=>$tutor
+        ]);
+    }
+    public function showtutor($id)
+    {
+        $student = Student::find($id);
+        $id_tutor=$student->tutors_id;
+        $tutor = Tutor::find($id_tutor);
+        // dd($student);
+        return view('students.showtutor', [
             'student' => $student,
             'tutor'=>$tutor
         ]);
@@ -162,4 +196,35 @@ class StudentController extends Controller
         // dd($student);
         return redirect('student');
     }
+
+    public function showclasroom()
+    {
+        $tasks = Task::all();
+        $courses = Course::all();
+        $classrooms = Classroom::all();
+        $teachers = Teacher::all();
+
+        return view('students.showclasroom', compact('tasks', 'courses', 'classrooms', 'teachers'));
+    }
+    public function sowaulastudent($id,Request $request)
+    {   $busqueda=trim($request->get('busqueda'));
+        //sin paginación
+        // return view('students.index', [
+        //     'students' => Student::all(),
+        // ]);
+
+        //con paginación
+        $students=DB::table('students')
+        ->select('id','DNI','name','surname','email','number_phone','is_active')
+        ->where('name','LIKE','%'.$busqueda.'%')
+        ->orWhere('surname','LIKE','%'.$busqueda.'%')
+        ->orWhere('DNI','LIKE','%'.$busqueda.'%')
+        ->orderBy('surname','asc')
+        ->paginate(7);
+        $course = Course::find($id);
+        $matriculas = Student_Course::all();
+
+        return view('students.indextutor', compact('students', 'course', 'matriculas','busqueda'));
+    }
+
 }
