@@ -7,54 +7,13 @@
     @include('layouts.headers.cards_teacher')
 
     <div class="container-fluid mt--7">
-        <div class="row">
-            <div class="col-xl-8 mb-5 mb-xl-0">
-                <div class="card bg-gradient-default shadow">
-                    <div class="card-header bg-transparent">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h6 class="text-uppercase text-light ls-1 mb-1">Tares realizadas</h6>
-                                <h2 class="text-white mb-0">Número de tareas por sección</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <!-- Chart -->
-                        <div class="chart">
-                            <!-- Chart wrapper -->
-                            <canvas id="myChart2" class="chart-canvas"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4">
-                <div class="card shadow">
-                    <div class="card-header bg-transparent">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h6 class="text-uppercase text-muted ls-1 mb-1">Tareas Pendientes</h6>
-                                <h2 class="mb-0">Tareas enviadas</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-
-                        <!-- Chart -->
-                        <div class="chart">
-                            {{-- //class="chart-canvas" --}}
-                            <canvas id="myChart" ></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- <div class="row mt-5">
+        <div class="row mt-5">
             <div class="col-xl-8 mb-5 mb-xl-0">
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Page visits</h3>
+                                <h3 class="mb-0">Aulas 2022</h3>
                             </div>
                             <div class="col text-right">
                                 <a href="#!" class="btn btn-sm btn-primary">See all</a>
@@ -66,81 +25,81 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">Page name</th>
-                                    <th scope="col">Visitors</th>
-                                    <th scope="col">Unique users</th>
-                                    <th scope="col">Bounce rate</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Cantidad Estudiantes</th>
+                                    <th scope="col">Estudiantes Notas altas</th>
+                                    <th scope="col">Estudiantes Notas bajas</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row">
-                                        /argon/
+                                        Matematica 1 "A"
                                     </th>
                                     <td>
-                                        4,569
+                                        24
                                     </td>
                                     <td>
-                                        340
+                                        <i class="fas fa-arrow-up text-success mr-3"></i> 22
                                     </td>
                                     <td>
-                                        <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
+                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 2
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        /argon/index.html
+                                        Matematica 1 "B"
                                     </th>
                                     <td>
-                                        3,985
+                                        30
                                     </td>
                                     <td>
-                                        319
+                                        <i class="fas fa-arrow-up text-success mr-3"></i> 26
                                     </td>
                                     <td>
-                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
+                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 4
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        /argon/charts.html
+                                        Matematica 1 "C"
                                     </th>
                                     <td>
-                                        3,513
+                                        21
                                     </td>
                                     <td>
-                                        294
+                                        <i class="fas fa-arrow-up text-success mr-3"></i> 21
                                     </td>
                                     <td>
-                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
+                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 0
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        /argon/tables.html
+                                        Matematica 1 "D"
                                     </th>
                                     <td>
-                                        2,050
+                                        27
                                     </td>
                                     <td>
-                                        147
+                                        <i class="fas fa-arrow-up text-success mr-3"></i> 26
                                     </td>
                                     <td>
-                                        <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
+                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 1
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        /argon/profile.html
+                                        Matematica 1 "E"
                                     </th>
                                     <td>
-                                        1,795
+                                        26
                                     </td>
                                     <td>
-                                        190
+                                        <i class="fas fa-arrow-up text-success mr-3"></i> 30
                                     </td>
                                     <td>
-                                        <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
+                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 6
                                     </td>
                                 </tr>
                             </tbody>
@@ -153,7 +112,7 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Social traffic</h3>
+                                <h3 class="mb-0">Avance de los Bimestres</h3>
                             </div>
                             <div class="col text-right">
                                 <a href="#!" class="btn btn-sm btn-primary">See all</a>
@@ -165,18 +124,18 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">Referral</th>
-                                    <th scope="col">Visitors</th>
+                                    <th scope="col">Bimestre</th>
+                                    <th scope="col">semanas</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row">
-                                        Facebook
+                                        Primer Bimestre
                                     </th>
                                     <td>
-                                        1,480
+                                        12.5
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
@@ -191,14 +150,14 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        Facebook
+                                        Segundo Bimestre
                                     </th>
                                     <td>
-                                        5,480
+                                        12
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <span class="mr-2">70%</span>
+                                            <span class="mr-2">60%</span>
                                             <div>
                                                 <div class="progress">
                                                 <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
@@ -209,10 +168,10 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        Google
+                                        Tercer Bimestre
                                     </th>
                                     <td>
-                                        4,807
+                                        11.5
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
@@ -227,10 +186,10 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        Instagram
+                                        Cuarto Bimestre
                                     </th>
                                     <td>
-                                        3,678
+                                        12.5
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
@@ -243,30 +202,12 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">
-                                        twitter
-                                    </th>
-                                    <td>
-                                        2,645
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="mr-2">30%</span>
-                                            <div>
-                                                <div class="progress">
-                                                <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
 
         @include('layouts.footers.auth')
     </div>
@@ -283,11 +224,11 @@
 						}
 					}]
 				},
-			
+
 			},
 			data: {
 				labels: ['1 "A"', '1 "B"', '1 "C"'],
-				
+
                 datasets: [{
 					label: 'Realizadas',
 					data: [25, 20, 30],
@@ -307,11 +248,11 @@
 						}
 					}]
 				},
-			
+
 			},
 			data: {
 				labels: ['1 "A"', '1 "B"', '1 "C"'],
-				
+
                 datasets: [{
 					label: 'Enviadas',
 					data: [22, 20, 30],

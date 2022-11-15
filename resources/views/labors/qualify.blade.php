@@ -14,7 +14,7 @@
                                     <div class="col-lg-12 col-7 ">
 
                                         <h2 class="mb-0">Recepción de la tarea "{{ $task->name }}" enviada por el
-                                            estudiante {{ $student->name }} {{ $student->surname }}</h2>
+                                            estudiante{{ $student->name }} {{ $student->surname }}</h2>
 
                                     </div>
                                 </div>

@@ -24,7 +24,7 @@
 
             <div class="d-flex  justify-content-center m-4">
 
-                <div class="col-sm-12 col-lg-10 col-md-10 " style="border-style:dashed;">
+                <div class="col-sm-12 col-lg-10 col-md-10 " ">
 
 
                     <div class="form-group">

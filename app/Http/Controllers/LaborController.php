@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Log;
 use Twilio\TwiML\MessagingResponse;
 use Illuminate\Support\Facades\File;
 use Twilio\Rest\Client;
+use Illuminate\Support\Facades\DB;
 
 class LaborController extends Controller
 {
@@ -24,15 +25,15 @@ class LaborController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        $teachers = Teacher::all();
-        $courses = Course::all();
-        $classrooms = Classroom::all();
-        $labors = Labor::all();
-        $students = Student::all();
-        return view('labors.index', compact('labors', 'students', 'courses', 'classrooms', 'teachers'));
-    }
+    // public function index(Request $request)
+    // {
+    //     $teachers = Teacher::all();
+    //     $courses = Course::all();
+    //     $classrooms = Classroom::all();
+    //     $labors = Labor::all();
+    //     $students = Student::all();
+    //     return view('labors.index', compact('labors', 'students', 'courses', 'classrooms', 'teachers'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -247,14 +248,59 @@ class LaborController extends Controller
         return $response;
     }
 
-    public function filter(Request $request)
+    public function index(Request $request)
     {
+        $idcurso = trim($request->get('idcurso'));
+        $bimestre = trim($request->get('bimestre'));
+        $bimestreNombre='';
+        if ($idcurso == null && $bimestre == null) {
+            $labors = Labor::all();
+        } else {
+            switch ($bimestre) {
+                case 1: {
+                        $labors = DB::table('labors')
+                            ->select('id', 'photo', 'reception_code', 'note', 'feedback', 'delivery_date', 'students_id')
+                            ->WhereDate('delivery_date', '>=',  '2022-02-15')
+                            ->WhereDate('delivery_date', '<=', '2022-04-08')
+                            ->get();
+                        $bimestreNombre='Segundo Bimestre';
+                        break;
+                    }
+                case 2: {
+                        $labors = DB::table('labors')
+                        ->select('id', 'photo', 'reception_code', 'note', 'feedback', 'delivery_date', 'students_id')
+                            ->WhereDate('delivery_date', '>=',  '2022-04-29')
+                            ->WhereDate('delivery_date', '<=', '2022-07-08')
+                            ->get();
+                        $bimestreNombre='Segundo Bimestre';
+                        break;
+                    }
+                case 3: {
+                        $labors = DB::table('labors')
+                        ->select('id', 'photo', 'reception_code', 'note', 'feedback', 'delivery_date', 'students_id')
+                            ->WhereDate('delivery_date', '>=',  '2022-07-08')
+                            ->WhereDate('delivery_date', '<=', '2022-09-30')
+                            ->get();
+                        $bimestreNombre='Segundo Bimestre';
+                        break;
+                    }
+                case 4: {
+                        $labors = DB::table('labors')
+                            ->select('id', 'photo', 'reception_code', 'note', 'feedback', 'delivery_date', 'students_id')
+                            ->WhereDate('delivery_date', '>=',  '2022-09-30')
+                            ->WhereDate('delivery_date', '<=', '2022-12-15')
+                            ->get();
+                        $bimestreNombre='Segundo Bimestre';
+                        break;
+                    }
+            }
+        }
+
         $students = Student::all();
-        $labors = Labor::all();
         $courses = Course::all();
-        $course_filter = Course::find($request->get('courses_id'));
+        $coursef = Course::find($idcurso);
         $classrooms = Classroom::all();
         $teachers = Teacher::all();
-        return view('labors.show', compact('students', 'courses', 'classrooms', 'teachers', 'course_filter', 'labors'));
+        return view('labors.index', compact('students', 'courses', 'classrooms', 'teachers', 'coursef', 'labors','idcurso','bimestreNombre'));
     }
 }

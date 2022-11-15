@@ -35,7 +35,7 @@
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header border-0 md-6">
-                        <h3 class="mb-0">Enviar la tarea "{{ $task->name }}" a los siguientes estudiantes</h3>
+                        <h3 class="mb-0">Enviar la tarea <strong class="text-primary">" {{ $task->name }} "</strong> a los siguientes estudiantes</h3>
                     </div>
 
                     <!-- Light table -->

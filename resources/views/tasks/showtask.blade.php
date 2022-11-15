@@ -8,17 +8,17 @@
                 <div class="header-body">
                     <div class="d-flex p-4">
                         <div class="col-lg-12 col-7 ">
-                            <h1 class="mb-0">Descripcion de la Tarea</h1>
+                            <h1 class="mb-0">Descripcion de la Tarea <strong class="text-primary">{{ $task->name }}</strong></h1>
                         </div>
                     </div>
                     <div class="d-flex justify-content-around mb-2">
-                        <div class="d-flex justify-content-between m-0 col-7">
+                        <div class=" container">
                             <div class=" p-4 " style="border-style:dashed;">
                                 <img src="{{ asset('argon/img/photos/'.$task->photo) }}" alt="{{ $task->name }}" class="img-fluid" width="450">
                             </div>
                         </div>
-                        <div class="d-flex justify-content-left m-0 col-5 ">
-                            <div class="p-4 w-100 " style="border-style:dashed;">
+                        <div class=" container ">
+                            <div class="p-4 w-100 " >
 
                                 <div class="form-group">
                                     <label for="name">Nombre</label>
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Descripción</label>
-                                    <input type="text" class="form-control" value="{{ $task->description }}" readonly="readonly">
+                                    <textarea type="textarea" class="form-control" value="" readonly="readonly" rows="3">{{ $task->description }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="reception_code">Codigo de recepción</label>

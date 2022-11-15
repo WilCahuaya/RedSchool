@@ -12,6 +12,7 @@ use App\Models\Student;
 use App\Models\Student_Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 
 
 use Twilio\Rest\Client;
@@ -24,14 +25,14 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $tasks = Task::all();
-        $courses = Course::all();
-        $classrooms = Classroom::all();
-        $teachers = Teacher::all();
-        return view('tasks.index', compact('tasks', 'courses', 'classrooms', 'teachers'));
-    }
+    // public function index()
+    // {
+    //     $tasks = Task::all();
+    //     $courses = Course::all();
+    //     $classrooms = Classroom::all();
+    //     $teachers = Teacher::all();
+    //     return view('tasks.index', compact('tasks', 'courses', 'classrooms', 'teachers'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -55,13 +56,13 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=> 'required',
-            'description'=> 'required',
-            'reception_code'=> 'required',
-            'created_date'=> 'required',
-            'delivery_date'=> 'required',
-            'photo'=> 'required',
-            'courses_id'=> 'required'
+            'name' => 'required',
+            'description' => 'required',
+            'reception_code' => 'required',
+            'created_date' => 'required',
+            'delivery_date' => 'required',
+            'photo' => 'required',
+            'courses_id' => 'required'
 
         ]);
 
@@ -127,13 +128,13 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name'=> 'required',
-            'description'=> 'required',
-            'reception_code'=> 'required',
-            'created_date'=> 'required',
-            'delivery_date'=> 'required',
-            'photo'=> 'required',
-            'courses_id'=> 'required'
+            'name' => 'required',
+            'description' => 'required',
+            'reception_code' => 'required',
+            'created_date' => 'required',
+            'delivery_date' => 'required',
+            'photo' => 'required',
+            'courses_id' => 'required'
 
         ]);
 
@@ -179,8 +180,8 @@ class TaskController extends Controller
     {
         require_once __DIR__ . './../../../vendor/autoload.php';
         $students = Student::all();
-        $courses=Course::all();
-        $matriculas=Student_Course::all();
+        $courses = Course::all();
+        $matriculas = Student_Course::all();
         $task = Task::find($id);
         $sid = "AC9c4872acc6d847280b8b531767b41636";
         $token = "24b23d804a34dd7230dd2763dff9b3e4";
@@ -202,7 +203,7 @@ class TaskController extends Controller
 
                                         [
                                             "from" => "whatsapp:+14155238886",
-                                            "body" => "*ACTIVIDAD*"."\n"."*NOMBRE:*"." ".$task->name."\n"."*DESCRIPCIÓN:*"." ".$task->description."\n"."*CÓDIGO DE ENVIO:*"." ".$task->reception_code."\n"."*FECHA DE ENTREGA:*"." ".$task->delivery_date,
+                                            "body" => "*ACTIVIDAD*" . "\n" . "*NOMBRE:*" . " " . $task->name . "\n" . "*DESCRIPCIÓN:*" . " " . $task->description . "\n" . "*CÓDIGO DE ENVIO:*" . " " . $task->reception_code . "\n" . "*FECHA DE ENTREGA:*" . " " . $task->delivery_date,
                                             "mediaUrl" => $destination,
 
                                         ]
@@ -239,7 +240,7 @@ class TaskController extends Controller
             if ($task->courses_id == $course->id) {
                 foreach ($classrooms as $classroom) {
                     if ($course->classrooms_id == $classroom->id) {
-                        $name_course = substr($course->name,0,-2). " " . $classroom->grade . $classroom->section;
+                        $name_course = substr($course->name, 0, -2) . " " . $classroom->grade . $classroom->section;
                     }
                 }
             }
@@ -256,5 +257,59 @@ class TaskController extends Controller
         $classrooms = Classroom::all();
 
         return view('tasks.sendtask', compact('task', 'students', 'courses', 'matriculas', 'classrooms'));
+    }
+    public function index(Request $request)
+    {
+        $idcurso = trim($request->get('idcurso'));
+        $bimestre = trim($request->get('bimestre'));
+        $bimestreNombre='';
+        if ($idcurso == null && $bimestre == null) {
+            $tasks = Task::all();
+        } else {
+            switch ($bimestre) {
+                case 1: {
+                        $tasks = DB::table('tasks')
+                            ->select('id', 'reception_code', 'name', 'description', 'created_date', 'delivery_date', 'photo', 'courses_id')
+                            ->WhereDate('created_date', '>=',  '2022-02-15')
+                            ->WhereDate('created_date', '<=', '2022-04-08')
+                            ->get();
+                        $bimestreNombre='Primer Bimestre';
+                        break;
+                    }
+                case 2: {
+                        $tasks = DB::table('tasks')
+                            ->select('id', 'reception_code', 'name', 'description', 'created_date', 'delivery_date', 'photo', 'courses_id')
+                            ->WhereDate('created_date', '>=',  '2022-04-29')
+                            ->WhereDate('created_date', '<=', '2022-07-08')
+                            ->get();
+                        $bimestreNombre='Segundo Bimestre';
+                        break;
+                    }
+                case 3: {
+                        $tasks = DB::table('tasks')
+                            ->select('id', 'reception_code', 'name', 'description', 'created_date', 'delivery_date', 'photo', 'courses_id')
+                            ->WhereDate('created_date', '>=',  '2022-07-08')
+                            ->WhereDate('created_date', '<=', '2022-09-30')
+                            ->get();
+                        $bimestreNombre='Tercer Bimestre';
+                        break;
+                    }
+                case 4: {
+                        $tasks = DB::table('tasks')
+                            ->select('id', 'reception_code', 'name', 'description', 'created_date', 'delivery_date', 'photo', 'courses_id')
+                            ->WhereDate('created_date', '>=',  '2022-09-30')
+                            ->WhereDate('created_date', '<=', '2022-12-15')
+                            ->get();
+                        $bimestreNombre='Cuarto Bimestre';
+                        break;
+                    }
+            }
+        }
+        $coursef = Course::find($idcurso);
+        $courses = Course::all();
+        $teachers = Teacher::all();
+        $classrooms = Classroom::all();
+
+        return view('tasks.index', compact('tasks', 'coursef', 'courses', 'teachers', 'idcurso', 'classrooms', 'bimestreNombre'));
     }
 }

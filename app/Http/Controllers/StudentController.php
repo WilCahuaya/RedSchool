@@ -208,12 +208,7 @@ class StudentController extends Controller
     }
     public function sowaulastudent($id,Request $request)
     {   $busqueda=trim($request->get('busqueda'));
-        //sin paginación
-        // return view('students.index', [
-        //     'students' => Student::all(),
-        // ]);
 
-        //con paginación
         $students=DB::table('students')
         ->select('id','DNI','name','surname','email','number_phone','is_active')
         ->where('name','LIKE','%'.$busqueda.'%')

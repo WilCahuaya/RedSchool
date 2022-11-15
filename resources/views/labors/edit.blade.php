@@ -50,10 +50,10 @@
                                     <div class="d-flex p-4">
                                         <div class="col-lg-12 col-7 ">
 
-                                            <h2 class="mb-0">Recepción de la tarea "{{ $task->name }}" enviada por el
-                                                estudiante {{ $student->name }} {{ $student->surname }}</h2>
+                                            <h2 class="mb-0">Recepción de la tarea <strong class="text-primary">"{{ $task->name }}"</strong> enviada por el
+                                                estudiante <strong class="text-primary">{{ $student->name }} {{ $student->surname }}</strong></h2>
 
-                                        </div>                                        
+                                        </div>
                                     </div>
                                     @if (session('success'))
                                             <div class="alert alert-danger">
@@ -61,14 +61,14 @@
                                             </div>
                                         @endif
                                     <div class="d-flex justify-content-around mb-2">
-                                        <div class="d-flex justify-content-between m-0 col-7">
+                                        <div class=" m-0 col-7">
                                             <div class=" p-4 " style="border-style:dashed;">
                                                 <img src="{{ $labor->photo }}" alt="{{ $labor->reception_code }}"
                                                     class="img-fluid" width="450">
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-left m-0 col-5 ">
-                                            <div class="p-4 w-100 " style="border-style:dashed;">
+                                        <div class=" m-0 col-5 ">
+                                            <div class="p-4 w-100 " ">
 
                                                 <div class="form-group">
                                                     <label for="reception_code">Nombre de la tarea</label>

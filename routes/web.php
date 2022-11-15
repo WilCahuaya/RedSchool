@@ -90,16 +90,21 @@ Route::group(['middleware' => ['auth','teacher']], function () {
     Route::get('/tasksshow/{task}', [App\Http\Controllers\TaskController::class, 'showtask'])->name('showtask');
     Route::get('/taskssend/{task}', [App\Http\Controllers\TaskController::class, 'sendtask'])->name('sendtask');
     Route::post('tasks_f', [App\Http\Controllers\TaskController::class, 'filtrar'])->name('filtrar_tasks');
+    //Route::get('tasks_index', [App\Http\Controllers\TaskController::class, 'filttask'])->name('filttask');
 
     //labors
     Route::resource('labors', App\Http\Controllers\LaborController::class);
-    Route::post('labors_f', [App\Http\Controllers\LaborController::class, 'filter'])->name('filtrar_labors');
+    //Route::get('labors_f', [App\Http\Controllers\LaborController::class, 'filter'])->name('filtrar_labors');
     Route::get('laborscalificar/{id}', [App\Http\Controllers\LaborController::class, 'edit'])->name('calificar_labors');
 
+    //vistas del tutor a sus estudiantes
     Route::get('/studentviewtutor', [App\Http\Controllers\StudentController::class, 'indextutor'])->name('studentviewtutor');
     Route::get('/studentshowtutor/{id}', [App\Http\Controllers\StudentController::class, 'showtutor'])->name('studentshowviewtutor');
     Route::get('/showclasroom', [App\Http\Controllers\StudentController::class, 'showclasroom'])->name('showclasroom');
     Route::get('/sowaulastudent/{id}', [App\Http\Controllers\StudentController::class, 'sowaulastudent'])->name('sowaulastudent');
+
+    //meetings
+    Route::resource('meetings', App\Http\Controllers\MeetingController::class);
 
 
 
