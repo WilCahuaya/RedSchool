@@ -7,7 +7,7 @@
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Sntentalesiano</title>
+        <title>RedSchool</title>
         <!-- Favicon -->
         <link href="{{ asset('argon') }}/img/brand/favicon.png" rel="icon" type="image/png">
         <!-- Fonts -->

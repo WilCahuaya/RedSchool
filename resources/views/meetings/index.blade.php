@@ -3,7 +3,8 @@
     <div class="main-content" id="panel">
         @include('layouts.navbars.navs.auth_teacher')
     </div>
-    <h1>Reuniones</h1>
+    <!-- Large button groups (default and split) -->
+<h1 class="m-5">Reuniones</h1>
     <div class="container">
         @include('layouts.footers.auth')
     </div>

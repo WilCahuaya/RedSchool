@@ -79,8 +79,6 @@ Route::group(['middleware' => ['auth','admin']], function () {
 });
 
 //Rutas del profesor
-
-
 Route::group(['middleware' => ['auth','teacher']], function () {
     //homr profesor
     Route::get('/homeTeacher', [App\Http\Controllers\HomeTeacherController::class, 'index'])->name('homeTeacher');
